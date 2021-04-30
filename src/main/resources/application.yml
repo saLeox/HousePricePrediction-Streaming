@@ -9,28 +9,18 @@ server:
 logging:
   file:
     name: ./log/sample.log
-    
-topic:
-  group: app1
-  name: first_topic
-  topic_in_1: mystreamin
-  topic_out_1: mystreamout
-  topic_in_2: wordcount-input
-  topic_out_2: wordcount-output
-  topic_in_3: sum-input
-  topic_out_3: sum-output
-  topic_in_4: streamingTopic1
-  topic_out_4: streamingTopic2
-  
-stream:
-  katble:
-    wordcount: word-count
-    sum: sum
-    timewindow: windowStore
+
+kafka:
+  topic:
+    group: app1
+    house_transaction: house_transaction
+  stream:
+    katble:
+      house_transaction_cnt: house_transaction_cnt
 
 bigquery:
   dataset: 1111
-  table: train
+  table: training_data
 
 spring:
   kafka:
@@ -51,6 +41,6 @@ spring:
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfigurationdo
   application:
-    name: gk1-sample
+    name: HousePricePrediction-Streaming
       
 

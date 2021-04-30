@@ -19,11 +19,6 @@ public class KafkaStreamsConfig {
     @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
-	@Value(value = "${topic.topic_in_1}")
-	private String topic_in;
-	@Value(value = "${topic.topic_out_1}")
-	private String topic_out;
-
     // SER/DES可以在builder中再次进行设置
     // 没有必要因为不同类型创建多个StreamsBuilderFactoryBean,何况它是全局只有能唯一bean存在
     // 如果需要功能拓展则可进行改写
