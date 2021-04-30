@@ -20,7 +20,7 @@ kafka:
 
 bigquery:
   dataset: 1111
-  table: training_data
+  table: train
 
 spring:
   kafka:
