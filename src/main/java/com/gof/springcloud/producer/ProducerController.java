@@ -12,7 +12,9 @@ import com.gof.springcloud.entity.ResultVo;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @Api("Kafka Producer Controller")
 public class ProducerController {
@@ -27,6 +29,7 @@ public class ProducerController {
 	@PostMapping("/sendHouseTransaction")
 	@ApiOperation(value = "Sent a house transaction record")
 	public ResultVo<String> sendHouseTransaction(String msg) {
+		log.info(msg);
 		kafkaTemplate.send(topic_house_transaction, msg);
 		return new ResultVo<String>(true);
 	}

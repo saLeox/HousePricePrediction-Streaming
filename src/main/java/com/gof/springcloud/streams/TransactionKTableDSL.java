@@ -34,15 +34,14 @@ public class TransactionKTableDSL {
 	private String ktable;
 
 	@Bean("transactionETLStream")
-	// By default, window here is Tumbling.
-	// The other two can be set specifically
-	// https://kafka.apache.org/28/documentation/streams/developer-guide/dsl-api.html#hopping-time-windows
 	public KStream<String, String> windowExampleProcessing(
 			@Qualifier(KafkaStreamsDefaultConfiguration.DEFAULT_STREAMS_BUILDER_BEAN_NAME) StreamsBuilder builder) {
 		KStream<String, String> stream = builder.stream(topic);
 		stream.foreach((key, value) -> bigQueryInsert
-				.insert(JsonExtractUtil.extractFromStr(value, JsonExtractUtil.transaction_feature)));
-		stream.map((key, value) -> new KeyValue<String, String>("transaction", value.toString())).groupByKey()
+				.insert(JsonExtractUtil
+						.extractFromStr(value, JsonExtractUtil.transaction_feature)));
+		stream.map((key, value) -> new KeyValue<String, String>("transaction", value.toString()))
+				.groupByKey()
 				.windowedBy(TimeWindows.of(Duration.ofMinutes(10)))
 				.count(Materialized.<String, Long, WindowStore<Bytes, byte[]>>as(ktable));
 		return stream;

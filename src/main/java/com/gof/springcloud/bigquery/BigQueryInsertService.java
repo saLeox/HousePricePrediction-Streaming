@@ -27,6 +27,7 @@ public class BigQueryInsertService {
 	// refer to following link
 	// https://cloud.google.com/bigquery/streaming-data-into-bigquery#bigquery_table_insert_rows-java
 	public void insert(Map<String, Object> rowContent) {
+		if (null == rowContent || rowContent.size() == 0) return;
 		TableId tableId = TableId.of(dataset, table); // test, train, X_train
 		InsertAllResponse response = bigQuery
 				.insertAll(InsertAllRequest.newBuilder(tableId).addRow(rowContent).build());
