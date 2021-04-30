@@ -7,6 +7,7 @@
 ![](https://raw.githubusercontent.com/saLeox/photoHub/main/20210430185251.png)
 
 **Architect Decision**
+
 *Spark-streaming* or *Flink-streaming* need cluster to submit jobs, will not make any attempt so far.
 
 ## *Components*
