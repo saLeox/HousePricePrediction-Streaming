@@ -35,6 +35,7 @@ public class JsonExtractUtil {
 		Map<String, Object> result = new TreeMap<String, Object>();
 		JSONObject obj_raw = null;
 		JSONObject obj_extracted = null;
+		if (str == null || str.length() == 0) return result;
 		try {
 			obj_raw = new JSONObject(str);
 			obj_extracted = new JSONObject(obj_raw, transaction_feature);
