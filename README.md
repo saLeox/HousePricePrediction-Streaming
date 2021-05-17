@@ -1,7 +1,7 @@
 
 
 
-# HousePricePrediction-Streaming Data Pipeline
+# Lambda-Streaming-HousePricePredict
 
 ## *Architect Overview*
 ![](https://raw.githubusercontent.com/saLeox/photoHub/main/20210430185251.png)
